@@ -26,7 +26,10 @@ NeiroRedis service to cache key-value , where ***key must be string*** and ***va
 задаётся константой в main файле)
 
 
-### to start server use 
+### start http server 
 ```docker build -t neiro_redis .```
 
-```docker run -d -p 8000:8000 neiro_redis```
+```docker run  -p 8000:8000 neiro_redis```
+
+### stop 
+```cntrl+c```
