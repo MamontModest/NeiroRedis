@@ -1,0 +1,4 @@
+ERROR: 2023/12/25 01:30:11.359719 handlers.go:29: &{ {<nil> }}
+ERROR: 2023/12/25 01:30:53.508246 handlers.go:29: &{ {<nil> }}
+ERROR: 2023/12/25 01:31:14.744695 handlers.go:29: &{ {<nil> }}
+ERROR: 2023/12/25 01:31:48.580668 handlers.go:29: &{sadasd {map[login:loaa2ss2ssыsszsgs@loud.com name:name password:passsword refer:aa06ae82-8e51-4da2-88aa-3e82053b53ff surName:surName] object}}
