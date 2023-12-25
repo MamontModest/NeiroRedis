@@ -12,7 +12,7 @@ type Object struct {
 	//Ключ
 	Key string
 	//Время, после которого объект должен само удалиться
-	Exp int
+	Exp int64
 }
 
 type IHeap interface {
@@ -20,6 +20,7 @@ type IHeap interface {
 	Pop() (*Object, bool)
 	GetLastItem() (*Object, bool)
 	ChangeObject(new *Object)
+	DeleteFromMiddle(key string) bool
 }
 
 // Push добавляет объект в кучу
@@ -46,6 +47,7 @@ func (h *Heap) Pop() (*Object, bool) {
 
 	//delete last element
 	lastObject := h.Objects[len(h.Objects)-1]
+	h.IndexObject[h.Objects[0].Key] = 0
 	h.Objects = h.Objects[:len(h.Objects)-1]
 	delete(h.IndexObject, lastObject.Key)
 
@@ -114,4 +116,14 @@ func (h *Heap) swapDown(indexUp int) {
 			}
 		}
 	}
+}
+
+func (h *Heap) DeleteFromMiddle(key string) bool {
+	object, flag := h.GetLastItem()
+	if !flag {
+		return false
+	}
+	h.ChangeObject(&Object{key, object.Exp - 1})
+	h.Pop()
+	return true
 }

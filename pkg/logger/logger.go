@@ -14,5 +14,5 @@ func InitLogger(logPath string) (Logger, error) {
 	if err != nil {
 		return Logger{nil}, err
 	}
-	return Logger{logger.Init("LoggerExample", false, true, lf)}, nil
+	return Logger{logger.Init("LoggerExample", false, false, lf)}, nil
 }

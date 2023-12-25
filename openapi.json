@@ -1,0 +1,130 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "NeiroRedis",
+    "version" : "1.0"
+  },
+  "paths" : {
+    "/<key>" : {
+      "get" : {
+        "tags" : [ "cache" ],
+        "operationId" : "get value and update time_exp",
+        "responses" : {
+          "201" : {
+            "description" : "get value",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "delete" : {
+        "tags" : [ "cache" ],
+        "operationId" : "delete key",
+        "responses" : {
+          "204" : {
+            "description" : "delete success value"
+          },
+          "400" : {
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/" : {
+      "post" : {
+        "tags" : [ "cache" ],
+        "operationId" : "create key-value",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Object"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "key-value was create",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Object" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "format" : "string",
+            "required" : true,
+            "example" : "auth_key"
+          },
+          "value" : {
+            "type" : "object",
+            "example": {
+                "login":"loaa2ss2ssыsszsgs@loud.com",
+                "password":"passsword",
+                "name":"name",
+                "surName":"surName",
+                "refer":"aa06ae82-8e51-4da2-88aa-3e82053b53ff"
+              }
+          }
+        }
+      },
+      "BadRequestResponse" : {
+        "type" : "object",
+        "properties" : {
+          "err" : {
+            "type" : "string",
+            "format" : "string",
+            "required" : true,
+            "example" : "not data with key 3"
+          }
+        }
+      }
+    }
+  }
+}
